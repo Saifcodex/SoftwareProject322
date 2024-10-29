@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/styles.css '%}">
+
+	  <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <title>Digital HealthCare</title>
+
+      <link rel="stylesheet" href="{% static 'css/style.css'%}">
+      <link rel="stylesheet" href="{% static 'css/all.min.css'%}">
+
+  </head>
+  <body>
+
+
+
+
+<!-- Nav Bar Start-->
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+			<a href="{% url 'home' %}">Digital<span>HealthCare</span></a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <span><i class="ri-menu-line"></i></span>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">Contacts</a></li>
+      </ul>
+		<div  class="nav__btns">
+			{% if user.is_authenticated %}
+			      {% if user.is_superuser %}
+			          <button class="btn sign__up"><a href="{% url 'admin:index' %}" >Admin Panel</a></button>
+                  {% else %}
+			<button class="btn sign__up"><a href="{% url 'user_profile' %}" >{{ user.username }}</a></button>
+			 	  {% endif %}
+			{% else %}
+				<button class="btn sign__up">  <a href="{% url 'login' %}">Login</a></button>
+			{% endif %}
+			{% if user.is_authenticated %}
+			      {% if user.is_superuser %}
+			          <button class="btn sign__in"><a href="{% url 'logout' %}" >Sign out</a></button>
+                  {% else %}
+			<button class="btn sign__in"><a href="{% url 'logout' %}" >Sign out</a></button>
+			 	  {% endif %}
+			{% else %}
+				<button class="btn sign__in">  <a href="{% url 'register' %}">Sign-up</a></button>
+			{% endif %}
+		</div>
+	</nav>
+
+<!--Navbar end-->
+
+
+<!-- Body part  start-->
+
+<section class="home">
+		<div class="content">
+			<h3>stay healthy, be fit</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Ea optio voluptatibus repellat ipsum soluta. Voluptate consectetur repellat repellendus porro enim?</p>
+			<a href="#" class="btn1">consult now</a>
+		</div>
+		<div class="image">
+			<img src="{% static 'img/img1.png'%}" alt="">
+		</div>
+	</section>
+
+	<section class="about">
+		<h1 class="heading">about <span>us</span></h1>
+
+		<div class="wrapper">
+			<div class="image">
+				<img src="{% static 'img/img2.png'%}" alt="">
+			</div>
+			<div class="content">
+				<h3>why you should choose us</h3>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Laborum blanditiis inventore magni dignissimos rerum debitis minus aliquam neque quisquam hic dicta nemo nostrum, totam cum esse sint velit natus autem!</p>
+				<p>Lorem ipsum, dolor sit amet, consectetur adipisicing elit. Consequuntur enim vitae odio earum sunt quam eaque illum quia aperiam, ad.</p>
+				<a href="#" class="btn1">learn more</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="services">
+		<h1 class="heading">our <span>services</span></h1>
+
+		<div class="box-container">
+			<div class="box">
+				<i class="fas fa-ambulance"></i>
+				<h3>24/7 ambulance</h3>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nulla!</p>
+				<a href="#" class="btn1">read more</a>
+			</div>
+
+			<div class="box">
+				<i class="fas fa-notes-medical"></i>
+				<h3>free ckeckups every tuesday</h3>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nulla!</p>
+				<a href="#" class="btn1">read more</a>
+			</div>
+
+			<div class="box">
+				<i class="fas fa-user-md"></i>
+				<h3>Doctor Appointment</h3>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nulla!</p>
+				<a href="{% url 'doctors' %}" class="btn1">Appointment</a>
+			</div>
+
+			<div class="box">
+				<i class="fas fa-procedures"></i>
+				<h3>good facility</h3>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nulla!</p>
+				<a href="#" class="btn1">read more</a>
+			</div>
+
+			<div class="box">
+				<i class="fas fa-pills"></i>
+				<h3>pharmacy</h3>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nulla!</p>
+				<a href="#" class="btn1">read more</a>
+			</div>
+
+			<div class="box">
+				<i class="fas fa-heartbeat"></i>
+				<h3>best care</h3>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nulla!</p>
+				<a href="#" class="btn1">read more</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="contact">
+		<h1 class="heading"><span>contact</span> us</h1>
+
+		<div class="wrapper">
+			<div class="image">
+				<img src="{% static 'img/img3.png'%}" alt="">
+			</div>
+
+			<form action="">
+				<h3>book appointment</h3>
+				<input type="text" placeholder="your name" class="box">
+				<input type="email" placeholder="your email" class="box">
+				<input type="number" placeholder="your phone number" class="box">
+				<input type="date" class="box">
+				<input type="submit" value="place appointment" class="btn1">
+			</form>
+		</div>
+	</section>
+
+
+
+<!-- Body part  end-->
+
+
+
+<!--Footer Start-->
+	<section class="footer">
+		<div class="box-container">
+			<div class="box">
+				<h3>quick links</h3>
+				<a href="#">home</a>
+				<a href="#">about</a>
+				<a href="#">services</a>
+				<a href="#">reviews</a>
+				<a href="#">blogs</a>
+				<a href="#">contact</a>
+			</div>
+
+			<div class="box">
+				<h3>services offered</h3>
+				<a href="#">CT scan</a>
+				<a href="#">diagnosis</a>
+				<a href="#">ambulance services</a>
+				<a href="#">children's clinic</a>
+				<a href="#">pharmacy</a>
+				<a href="#">dental care</a>
+			</div>
+
+			<div class="box">
+				<h3>our socials</h3>
+				<a href="#"><i class="fab fa-facebook"></i> facebook</a>
+				<a href="#"><i class="fab fa-twitter"></i> twitter</a>
+				<a href="#"><i class="fab fa-instagram"></i> instagram</a>
+				<a href="#"><i class="fab fa-linkedin"></i> linkedin</a>
+			</div>
+		</div>
+
+		<div class="bottom">&copy; 2024 all rights reserved | <span> Error404 </span></div>
+	</section>
+  <!--Footer Start-->
+  </body>
+</html>
+
+

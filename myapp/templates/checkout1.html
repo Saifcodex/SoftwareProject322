@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/styles.css '%}">
+
+	  <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <title>Digital HealthCare</title>
+
+      <link rel="stylesheet" href="{% static 'css/style.css'%}">
+      <link rel="stylesheet" href="{% static 'css/all.min.css'%}">
+
+  </head>
+  <body>
+
+
+
+
+<!-- Nav Bar Start-->
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+			<a href="#">Digital<span>HealthCare</span></a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <span><i class="ri-menu-line"></i></span>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">Contacts</a></li>
+      </ul>
+		<div  class="nav__btns">
+			{% if user.is_authenticated %}
+			      {% if user.is_superuser %}
+			          <button class="btn sign__up"><a href="{% url 'admin:index' %}" >Admin Panel</a></button>
+                  {% else %}
+			<button class="btn sign__up"><a href="{% url 'user_profile' %}" >{{ user.username }}</a></button>
+			 	  {% endif %}
+			{% else %}
+				<button class="btn sign__up">  <a href="{% url 'login' %}">Login</a></button>
+			{% endif %}
+			{% if user.is_authenticated %}
+			      {% if user.is_superuser %}
+			          <button class="btn sign__in"><a href="{% url 'logout' %}" >Sign out</a></button>
+                  {% else %}
+			<button class="btn sign__in"><a href="{% url 'logout' %}" >Sign out</a></button>
+			 	  {% endif %}
+			{% else %}
+				<button class="btn sign__in">  <a href="{% url 'register' %}">Sign-up</a></button>
+			{% endif %}
+		</div>
+	</nav>
+
+<!--Navbar end-->
+
+
+
+
+
+
+  <!--Footer Start-->
+	<section class="footer">
+		<div class="box-container">
+			<div class="box">
+				<h3>quick links</h3>
+				<a href="#">home</a>
+				<a href="#">about</a>
+				<a href="#">services</a>
+				<a href="#">reviews</a>
+				<a href="#">blogs</a>
+				<a href="#">contact</a>
+			</div>
+
+			<div class="box">
+				<h3>services offered</h3>
+				<a href="#">CT scan</a>
+				<a href="#">diagnosis</a>
+				<a href="#">ambulance services</a>
+				<a href="#">children's clinic</a>
+				<a href="#">pharmacy</a>
+				<a href="#">dental care</a>
+			</div>
+
+			<div class="box">
+				<h3>our socials</h3>
+				<a href="#"><i class="fab fa-facebook"></i> facebook</a>
+				<a href="#"><i class="fab fa-twitter"></i> twitter</a>
+				<a href="#"><i class="fab fa-instagram"></i> instagram</a>
+				<a href="#"><i class="fab fa-linkedin"></i> linkedin</a>
+			</div>
+		</div>
+
+		<div class="bottom">&copy; 2024 all rights reserved | <span> Error404 </span></div>
+	</section>
+  <!--Footer Start-->
+  </body>
+</html>
+
